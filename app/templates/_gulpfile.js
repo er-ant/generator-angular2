@@ -4,10 +4,25 @@ var gulp = require('gulp'),
     webserver = require('gulp-webserver');
 
 // run init tasks
-gulp.task('default', ['dependencies', 'js', 'html', 'css']);
+gulp.task('default', ['dependencies', 'js', 'jade', 'css']);
 
 // run development task
 gulp.task('dev', ['watch', 'serve']);
+
+// jade templates
+gulp.task('jade', () => {
+  const jade = require('gulp-jade');
+  var styles = [];
+
+  return gulp.src('components/*.jade')
+    .pipe(jade({
+      pretty: false,
+      locals: {
+        styles: styles
+      }
+    }))
+    .pipe(gulp.dest('dest'))
+});
 
 // serve the build dir
 gulp.task('serve', function () {

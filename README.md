@@ -35,9 +35,9 @@ The structure generated is;
 ```
 - src
 	- index.js
-	- index.html
+	- index.jade
 	- {generated-file-name}.js
-	- {generated-file-name}.html
+	- {generated-file-name}.jade
 - .editorconfig
 - .gitignore
 - gulpfile.js

@@ -32,7 +32,7 @@ module.exports = yeoman.Base.extend({
 
   writing: {
     app: function () {
-      this.basicTemplate = 'src/' + _.kebabCase(this.appname);
+      let componentPath = `src/components/${this.appname}/${this.appname}`;
 
       this.copy('_package.json', 'package.json');
       this.copy('_gulpfile.js', 'gulpfile.js');
@@ -41,9 +41,9 @@ module.exports = yeoman.Base.extend({
       this.copy('_gitignore', '.gitignore');
 
       this.copy('src/_index.js', 'src/index.js');
-      this.copy('src/_index.html', 'src/index.html');
-      this.copy('src/_basic-template.html', this.basicTemplate + '.html');
-      this.copy('src/_basic-template.js', this.basicTemplate + '.js');
+      this.copy('src/_index.jade', 'src/index.jade');
+      this.copy('src/basic-component/_basic-template.jade', `${componentPath}.jade`);
+      this.copy('src/basic-component/_basic-template.js', `${componentPath}.js`);
     }
   },
 

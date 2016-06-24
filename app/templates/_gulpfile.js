@@ -12,21 +12,17 @@ gulp.task('dev', ['watch', 'serve']);
 // jade templates
 gulp.task('jade', () => {
   const jade = require('gulp-jade');
-  var styles = [];
 
-  return gulp.src('components/*.jade')
+  return gulp.src('src/**/*.jade')
     .pipe(jade({
-      pretty: false,
-      locals: {
-        styles: styles
-      }
+      pretty: false
     }))
     .pipe(gulp.dest('dest'))
 });
 
-// serve the build dir
+// serve the dest dir
 gulp.task('serve', function () {
-  gulp.src('build')
+  gulp.src('dest')
     .pipe(webserver({
       livereload: true,
       open: true,
@@ -36,11 +32,11 @@ gulp.task('serve', function () {
 // watch for changes and run the relevant task
 gulp.task('watch', function () {
   gulp.watch('src/**/*.js', ['js']);
-  gulp.watch('src/**/*.html', ['html']);
+  gulp.watch('src/**/*.jade', ['jade']);
   gulp.watch('src/**/*.css', ['css']);
 });
 
-// move dependencies into build dir
+// move dependencies into dest dir
 gulp.task('dependencies', function () {
   return gulp.src([
     'node_modules/traceur/bin/traceur-runtime.js',
@@ -53,7 +49,7 @@ gulp.task('dependencies', function () {
     'node_modules/es6-shim/es6-shim.min.js',
     'node_modules/es6-shim/es6-shim.map',
   ])
-    .pipe(gulp.dest('build/lib'));
+    .pipe(gulp.dest('dest/lib'));
 });
 
 // transpile & move js
@@ -72,17 +68,11 @@ gulp.task('js', function () {
     .pipe(rename({
       extname: '.js',
     }))
-    .pipe(gulp.dest('build'));
-});
-
-// move html
-gulp.task('html', function () {
-  return gulp.src('src/**/*.html')
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('dest'));
 });
 
 // move css
 gulp.task('css', function () {
   return gulp.src('src/**/*.css')
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('dest'));
 });

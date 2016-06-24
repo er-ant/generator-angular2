@@ -25,7 +25,7 @@ describe('when angular2 generator generates', function () {
       'readme.md',
       'gulpfile.js',
       'src/index.js',
-      'src/index.html'
+      'src/index.jade'
     ]);
   });
 
@@ -44,8 +44,8 @@ describe('when angular2 generator generates', function () {
 
       it('should create the dynamically named files named correctly', function () {
         assert.file([
-          'src/basic.js',
-          'src/basic.html'
+          'src/components/basic/basic.js',
+          'src/components/basic/basic.jade'
         ]);
       });
     });
@@ -63,8 +63,8 @@ describe('when angular2 generator generates', function () {
 
       it('should create the dynamically named files named correctly', function () {
         assert.file([
-          'src/dash-named.js',
-          'src/dash-named.html'
+          'src/components/dash-named/dash-named.js',
+          'src/components/dash-named/dash-named.jade'
         ]);
       });
     });
@@ -83,8 +83,8 @@ describe('when angular2 generator generates', function () {
 
       it('should create the dynamically named files named correctly', function () {
         assert.file([
-          'src/case-named.js',
-          'src/case-named.html'
+          'src/components/case-named/case-named.js',
+          'src/components/case-named/case-named.jade'
         ]);
       });
     });
@@ -107,8 +107,8 @@ describe('when angular2 generator generates', function () {
 
       it('should create the dynamically named files named correctly', function () {
         assert.file([
-          'src/basic.js',
-          'src/basic.html'
+          'src/components/basic/basic.js',
+          'src/components/basic/basic.jade'
         ]);
       });
     });
@@ -127,8 +127,8 @@ describe('when angular2 generator generates', function () {
 
       it('should create the dynamically named files named correctly', function () {
         assert.file([
-          'src/dash-named.js',
-          'src/dash-named.html'
+          'src/components/dash-named/dash-named.js',
+          'src/components/dash-named/dash-named.jade'
         ]);
       });
     });
@@ -147,8 +147,8 @@ describe('when angular2 generator generates', function () {
 
       it('should create the dynamically named files named correctly', function () {
         assert.file([
-          'src/cased-name.js',
-          'src/cased-name.html'
+          'src/components/cased-name/cased-name.js',
+          'src/components/cased-name/cased-name.jade'
         ]);
       });
     });

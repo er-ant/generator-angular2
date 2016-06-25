@@ -22,6 +22,7 @@ describe('when angular2 generator generates', function () {
       'package.json',
       '.editorconfig',
       '.gitignore',
+      '.jshintrc',
       'readme.md',
       'gulpfile.js',
       'src/index.js',

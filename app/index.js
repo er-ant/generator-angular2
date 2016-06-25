@@ -39,6 +39,7 @@ module.exports = yeoman.Base.extend({
       this.copy('_readme.md', 'readme.md');
       this.copy('_editorconfig', '.editorconfig');
       this.copy('_gitignore', '.gitignore');
+      this.copy('_jshintrc', '.jshintrc');
 
       this.copy('src/_index.js', 'src/index.js');
       this.copy('src/_index.jade', 'src/index.jade');

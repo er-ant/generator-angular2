@@ -1,4 +1,5 @@
 var gulp = require('gulp'),
+    jshint = require('gulp-jshint');
     rename = require('gulp-rename'),
     traceur = require('gulp-traceur'),
     webserver = require('gulp-webserver');
@@ -54,6 +55,10 @@ gulp.task('dependencies', function () {
 
 // transpile & move js
 gulp.task('js', function () {
+  gulp.src('src/**/*.js')
+  .pipe(jshint('.jshintrc'))
+  .pipe(jshint.reporter('default'))
+    
   return gulp.src('src/**/*.js')
     .pipe(rename({
       extname: '',

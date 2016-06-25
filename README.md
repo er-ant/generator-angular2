@@ -36,8 +36,10 @@ The structure generated is;
 - src
 	- index.js
 	- index.jade
-	- {generated-file-name}.js
-	- {generated-file-name}.jade
+	- component
+	-- {generated-name}
+	---- {generated-file-name}.js
+	---- {generated-file-name}.jade
 - .editorconfig
 - .gitignore
 - gulpfile.js

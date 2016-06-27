@@ -15,6 +15,7 @@ module.exports = yeoman.Base.extend({
       type: String,
       required: false
     });
+
     var appName = this.appname || path.basename(process.cwd());
     this.appname = _.kebabCase(appName);
     this.modulename = _.snakeCase(appName);
@@ -34,17 +35,28 @@ module.exports = yeoman.Base.extend({
     app: function () {
       let componentPath = `src/components/${this.appname}/${this.appname}`;
 
-      this.copy('_package.json', 'package.json');
-      this.copy('_gulpfile.js', 'gulpfile.js');
-      this.copy('_readme.md', 'readme.md');
-      this.copy('_editorconfig', '.editorconfig');
-      this.copy('_gitignore', '.gitignore');
-      this.copy('_jshintrc', '.jshintrc');
+      this.copy('.editorconfig', '.editorconfig');
+      this.copy('.gitignore', '.gitignore');
+      this.copy('.babelrc', '.babelrc');
+      this.copy('.eslintrc', '.eslintrc');
+      this.copy('.stylelintrc', '.stylelintrc');
 
-      this.copy('src/_index.js', 'src/index.js');
-      this.copy('src/_index.jade', 'src/index.jade');
-      this.copy('src/basic-component/_basic-template.jade', `${componentPath}.jade`);
-      this.copy('src/basic-component/_basic-template.js', `${componentPath}.js`);
+      this.copy('package.json', 'package.json');
+      this.copy('gulpfile.js', 'gulpfile.js');
+      this.copy('readme.md', 'readme.md');
+
+      this.copy('karma.conf.js', 'karma.conf.js');
+      this.copy('karma.init.js', 'karma.init.js');
+      this.copy('protractor.conf.js', 'protractor.conf.js');
+
+      this.copy('src/index.js', 'src/index.js');
+      this.copy('src/index.jade', 'src/index.jade');
+      this.copy('src/index.css', 'src/index.css');
+      this.copy('src/component/component.jade', `${componentPath}.jade`);
+      this.copy('src/component/component.js', `${componentPath}.js`);
+      this.copy('src/component/component.css', `${componentPath}.css`);
+      this.copy('src/component/component.e2e.js', `${componentPath}.e2e.js`);
+      this.copy('src/component/component.spec.js', `${componentPath}.spec.js`);
     }
   },
 

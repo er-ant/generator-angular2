@@ -9,6 +9,7 @@ describe('when arguments are passed through and generation happens with a cased 
   it('should create the dynamically named files named correctly', () => {
     assert.file([
       'src/components/cased-name/cased-name.js',
+      'src/components/cased-name/cased-name.css',
       'src/components/cased-name/cased-name.jade'
     ]);
   });

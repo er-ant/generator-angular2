@@ -9,6 +9,7 @@ describe('when arguments are passed through and generation happens with a dashed
   it('should create the dynamically named files named correctly', () => {
     assert.file([
       'src/components/dash-named/dash-named.js',
+      'src/components/dash-named/dash-named.css',
       'src/components/dash-named/dash-named.jade'
     ]);
   });

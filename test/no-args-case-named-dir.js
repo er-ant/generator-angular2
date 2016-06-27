@@ -9,6 +9,7 @@ describe('when no arguments are passed through and generation happens in a case 
   it('should create the dynamically named files named correctly', () => {
     assert.file([
       'src/components/case-named/case-named.js',
+      'src/components/case-named/case-named.css',
       'src/components/case-named/case-named.jade'
     ]);
   });

@@ -8,12 +8,22 @@ describe('when angular2 generator generates', () => {
 
   it('should create the required static files', () => {
     assert.file([
-      'package.json',
       '.editorconfig',
       '.gitignore',
-      'readme.md',
+      '.babelrc',
+      '.eslintrc',
+      '.stylelintrc',
+
+      'package.json',
       'gulpfile.js',
+      'readme.md',
+
+      'karma.conf.js',
+      'karma.init.js',
+      'protractor.conf.js',
+
       'src/index.js',
+      'src/index.css',
       'src/index.jade'
     ]);
   });

@@ -10,7 +10,7 @@ const babelify   = require('babelify');
 const eslint     = require('gulp-eslint');
 
 const postcss    = require('gulp-postcss');
-const concat     = require('gulp-concat');
+const concat     = require('gulp-concat-css');
 
 // run init tasks
 gulp.task('default', ['build']);
@@ -39,9 +39,9 @@ gulp.task('watch', () => {
 });
 
 // transpile & move js
-gulp.task('js', ['lint'], () =>
-  browserify('src/index.js', {
-    debug: false
+gulp.task('js', ['js-lint'], () =>
+  browserify('src/application.js', {
+    debug: true
   })
   .transform(babelify)
   .bundle()
@@ -50,7 +50,7 @@ gulp.task('js', ['lint'], () =>
   .pipe(gulp.dest('dist'))
 );
 
-gulp.task('lint', () =>
+gulp.task('js-lint', () =>
   gulp
     .src('src/**/*.js')
     .pipe(eslint())
@@ -58,11 +58,14 @@ gulp.task('lint', () =>
 );
 
 // work with stylesheets
-gulp.task('css', () =>
+gulp.task('css', ['css-lint'], () =>
   gulp
-    .src(['src/index.css', 'src/**/*.css'])
+    .src(['src/components/<%= appname %>/<%= appname %>.css', 'src/components/**/*.css'])
+    .pipe(concat('bundle.css', {
+      inlineImports: false,
+      rebaseUrls: false
+    }))
     .pipe(postcss([
-      require('stylelint')(),
       require('autoprefixer')('last 2 version'),
       require('postcss-import'),
       require('postcss-css-variables'),
@@ -70,8 +73,15 @@ gulp.task('css', () =>
       require('cssnano')()
     ]))
     .on('error', onError)
-    .pipe(concat('bundle.css'))
     .pipe(gulp.dest('dist'))
+);
+
+gulp.task('css-lint', () =>
+  gulp
+    .src('src/components/**/*.css')
+    .pipe(postcss([
+      require('stylelint')(),
+    ]))
 );
 
 // jade templates
